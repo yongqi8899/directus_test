@@ -46,14 +46,21 @@ var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 1:
                 result = _a.sent();
                 console.log("All available pages: ", result);
-                return [2 /*return*/, (result.map(function (product) {
+                return [2 /*return*/, result.map(function (product) {
                         return (React.createElement("div", { key: product.id },
                             React.createElement("h1", null, product.name),
                             React.createElement("p", null, product.description),
-                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/assets/" + product.image, alt: product.name }),
-                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/items/" + product.image, alt: product.name }),
-                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/items/products/" + product.image, alt: product.name })));
-                    }))];
+                            product.images &&
+                                product.images.map(function (image) {
+                                    return (
+                                    // <img
+                                    //   key={image.id}
+                                    //   src={`https://direct-green.dev.testen2go.de/assets/${image.id}`}
+                                    //   alt={product.name}
+                                    // />
+                                    React.createElement("img", { key: image.id, src: "https://direct-green.dev.testen2go.de/assets/" + image.directus_files_id, alt: product.name }));
+                                })));
+                    })];
         }
     });
 }); };
