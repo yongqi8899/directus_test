@@ -1,5 +1,6 @@
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
+import { Button } from "@nextui-org/react";
 
 const Home = async () => {
   const result = await directus.request(
@@ -17,10 +18,12 @@ const Home = async () => {
 
   return (
     <div>
+      <Button>Press me</Button>
       {result.map((product) => (
         <div key={product.id}>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
+
           {/* Check if product.images is an array before mapping */}
           {Array.isArray(product.images) &&
             product.images.map((image) => (

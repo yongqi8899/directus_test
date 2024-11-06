@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var directus_1 = require("@/lib/directus");
 var sdk_1 = require("@directus/sdk");
+var react_1 = require("@nextui-org/react");
 var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
     var result;
     return __generator(this, function (_a) {
@@ -46,15 +47,20 @@ var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 1:
                 result = _a.sent();
                 console.log("All available pages: ", result);
-                return [2 /*return*/, result.map(function (product) {
-                        return (React.createElement("div", { key: product.id },
+                // Check if result is an array and has at least one element before accessing images
+                if (Array.isArray(result) && result.length > 0) {
+                    console.log("Available images: ", result[0].images);
+                }
+                else {
+                    console.log("No products found.");
+                }
+                return [2 /*return*/, (React.createElement("div", null,
+                        React.createElement(react_1.Button, null, "Press me"),
+                        result.map(function (product) { return (React.createElement("div", { key: product.id },
                             React.createElement("h1", null, product.name),
                             React.createElement("p", null, product.description),
-                            product.images &&
-                                product.images.map(function (image) {
-                                    return (React.createElement("img", { key: image.id, src: "https://direct-green.dev.testen2go.de/assets/" + image.directus_files_id, alt: product.name }));
-                                })));
-                    })];
+                            Array.isArray(product.images) &&
+                                product.images.map(function (image) { return (React.createElement("img", { key: image.id, src: "https://direct-green.dev.testen2go.de/assets/" + image.directus_files_id, alt: product.name })); }))); })))];
         }
     });
 }); };
