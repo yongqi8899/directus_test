@@ -42,7 +42,7 @@ var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
     var result;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, directus_1["default"].request(sdk_1.readItems("products"))];
+            case 0: return [4 /*yield*/, directus_1["default"].request(sdk_1.readItems("products", { fields: ["id", "name", "description", "images.*"] }))];
             case 1:
                 result = _a.sent();
                 console.log("All available pages: ", result);
@@ -52,13 +52,7 @@ var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
                             React.createElement("p", null, product.description),
                             product.images &&
                                 product.images.map(function (image) {
-                                    return (
-                                    // <img
-                                    //   key={image.id}
-                                    //   src={`https://direct-green.dev.testen2go.de/assets/${image.id}`}
-                                    //   alt={product.name}
-                                    // />
-                                    React.createElement("img", { key: image.id, src: "https://direct-green.dev.testen2go.de/assets/" + image.directus_files_id, alt: product.name }));
+                                    return (React.createElement("img", { key: image.id, src: "https://direct-green.dev.testen2go.de/assets/" + image.directus_files_id, alt: product.name }));
                                 })));
                     })];
         }
