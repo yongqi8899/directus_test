@@ -36,11 +36,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-function HomePage() {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/, (React.createElement("div", null, "hi"))];
-        });
+var directus_1 = require("@/lib/directus");
+var sdk_1 = require("@directus/sdk");
+var Home = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, directus_1["default"].request(sdk_1.readItems("products"))];
+            case 1:
+                result = _a.sent();
+                console.log("All available pages: ", result);
+                return [2 /*return*/, (result.map(function (product) {
+                        return (React.createElement("div", { key: product.id },
+                            React.createElement("h1", null, product.name),
+                            React.createElement("p", null, product.description),
+                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/assets/" + product.image, alt: product.name }),
+                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/items/" + product.image, alt: product.name }),
+                            React.createElement("img", { src: "https://direct-green.dev.testen2go.de/items/products/" + product.image, alt: product.name })));
+                    }))];
+        }
     });
-}
-exports["default"] = HomePage;
+}); };
+exports["default"] = Home;
